@@ -1,8 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "./submit-button";
+import { useState } from "react";
 
 export default function Login({
   searchParams,
