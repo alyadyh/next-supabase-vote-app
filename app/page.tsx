@@ -1,4 +1,4 @@
-"use client";
+
 export default function Home() {
-  return <div>Logged in</div>
+  return <div>You are logged in</div>
 }
