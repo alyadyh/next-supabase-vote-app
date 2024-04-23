@@ -1,20 +1,20 @@
 "use client";
 
-import { useArticles } from "@/hooks/useArticles";
-import { useEffect } from "react";
+import { supabase } from "@/lib/supabase";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const { articles, getArticles } = useArticles()
+  const router = useRouter();
 
-  useEffect(() => {
-    getArticles()
-  }, []);
+  const logout = async () => {
+    await supabase
+      .auth
+      .signOut()
 
-  return <div>
-    <ul>
-      {articles.map((article: any, key: number) => {
-        return <li key={key}>{article.title}</li>
-      })}
-    </ul>
+    router.refresh();
+  }
+
+  return <div>Logged in
+    <button onClick={logout} className="px-2 py-1 bg-blue-500 text-white cursor-pointer">Logout</button>
   </div>
 }
